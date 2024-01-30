@@ -18,7 +18,7 @@ export function validateTradeForm(context: TradeFormValidationContext): TradeFor
     tradeQuote,
     account,
     isPermitSupported,
-    isZeroBalanceOrderAllowed,
+    isInsufficientBalanceOrderAllowed,
   } = context
 
   const { inputCurrency, outputCurrency, inputCurrencyAmount, inputCurrencyBalance, recipient } = derivedTradeState
@@ -71,7 +71,7 @@ export function validateTradeForm(context: TradeFormValidationContext): TradeFor
     }
   }
 
-  if (!isZeroBalanceOrderAllowed) {
+  if (!isInsufficientBalanceOrderAllowed) {
     if (!inputCurrencyBalance) {
       return TradeFormValidation.BalancesNotLoaded
     }
